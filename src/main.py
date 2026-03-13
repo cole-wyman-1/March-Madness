@@ -1,6 +1,7 @@
 """FastAPI application — serves bracket data, projections, and standings."""
 
 import logging
+import os
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -52,9 +53,16 @@ def regenerate_trace_pool(store: DataStore) -> None:
 
 app = FastAPI(title="March Madness Bracket Analyzer")
 
+cors_origins = [
+    "http://localhost:3000",
+]
+# Add production frontend URL if set
+if os.environ.get("FRONTEND_URL"):
+    cors_origins.append(os.environ["FRONTEND_URL"])
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=cors_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )
