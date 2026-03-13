@@ -201,7 +201,7 @@ class RatingsProvider:
     # Barttorvik fetching
     # ------------------------------------------------------------------
 
-    def fetch_from_barttorvik(self, year: int = 2026) -> bool:
+    def fetch_from_barttorvik(self, year: int = 2025) -> bool:
         """Fetch current ratings from barttorvik.com.
 
         Barttorvik's trank.php?json=1 returns an array of arrays:
@@ -278,7 +278,7 @@ class RatingsProvider:
         logger.warning("No ratings parsed from Barttorvik response")
         return False
 
-    def load_or_fetch(self, year: int = 2026) -> bool:
+    def load_or_fetch(self, year: int = 2025) -> bool:
         """Try to load ratings: cached file first, then Barttorvik API.
 
         Returns True if ratings are available.

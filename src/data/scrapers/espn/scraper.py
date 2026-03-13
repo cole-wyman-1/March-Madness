@@ -36,9 +36,15 @@ CACHE_DIR = Path("data/cache/espn")
 
 
 def _current_tournament_year() -> int:
-    """Detect the current tournament year. March Madness spans March-April."""
+    """Detect the current tournament year.
+
+    ESPN creates the challenge slug in early March each year.
+    If we're in Jan-Feb, the upcoming tournament is this year but may not be live yet.
+    Default to the most recent known tournament year until the new one is available.
+    """
     today = date.today()
-    return today.year
+    # TODO: bump to 2026 once ESPN publishes the 2026 bracket (early March 2026)
+    return min(today.year, 2025)
 
 
 class ESPNClient:

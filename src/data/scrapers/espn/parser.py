@@ -33,7 +33,7 @@ class ESPNParser:
 
     def __init__(self, all_propositions: list[dict],
                  region_map: dict[int, str] | None = None,
-                 year: int = 2026):
+                 year: int = 2025):
         """Initialize with the full list of 63 propositions.
 
         Args:

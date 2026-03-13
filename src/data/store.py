@@ -21,7 +21,7 @@ class DataStore:
     def __init__(self):
         self._groups: dict[str, GroupInfo] = {}
         self._entries: dict[str, list[BracketEntry]] = {}  # group_id -> entries
-        self._tournament_state: TournamentState = TournamentState(year=2026)
+        self._tournament_state: TournamentState = TournamentState(year=2025)
         self.trace_pool = None  # Optional TracePool instance
         self.ratings = None  # Optional RatingsProvider instance
 
